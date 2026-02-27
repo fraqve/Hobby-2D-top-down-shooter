@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://daha2rf1r5jdh"]
+
+[ext_resource type="Script" uid="uid://b3bklb6u8ngg6" path="res://Scripts/bullet.gd" id="1_xjght"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jb3vm"]
+radius = 1.9998308
+height = 11.998985
+
+[node name="bullet" type="Area2D" unique_id=1880926200]
+collision_mask = 6
+script = ExtResource("1_xjght")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=86506678]
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 6.0
+offset_bottom = 2.0
+color = Color(0.47843137, 0.05882353, 0.5411765, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=788333842]
+rotation = 1.5577887
+shape = SubResource("CapsuleShape2D_jb3vm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1888612681]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

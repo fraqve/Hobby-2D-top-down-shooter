@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://w8vp7xdrivr3"]
+
+[ext_resource type="Script" uid="uid://bh58c0r438jj" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bpu14weijl2xx" path="res://Tiles/Player.png" id="1_v0iea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 7.0
+
+[node name="Player" type="CharacterBody2D" unique_id=560030922]
+z_index = 4
+collision_mask = 6
+script = ExtResource("1_cvnsp")
+
+[node name="Timers" type="Node" parent="." unique_id=340539150]
+
+[node name="RollTimer" type="Timer" parent="Timers" unique_id=1363132887]
+wait_time = 0.3
+one_shot = true
+
+[node name="RollReload" type="Timer" parent="Timers" unique_id=78617736]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1369127105]
+texture = ExtResource("1_v0iea")
+
+[node name="Gun" type="Node2D" parent="." unique_id=778052525]
+z_index = 3
+
+[node name="ColorRect" type="ColorRect" parent="Gun" unique_id=16061684]
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 17.0
+offset_bottom = 7.0
+color = Color(0.9843137, 0.019607844, 0, 1)
+
+[node name="muzzle" type="Marker2D" parent="Gun" unique_id=154021070]
+position = Vector2(16, 5)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=315772902]
+zoom = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=863549635]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_cvnsp")

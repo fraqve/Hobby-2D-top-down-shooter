@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cokxe8mf8sx88"]
+
+[ext_resource type="Script" uid="uid://dshv6xh8lkx0j" path="res://Scripts/momie.gd" id="1_bj6q8"]
+[ext_resource type="Texture2D" uid="uid://dvjdmv8swd35p" path="res://Tiles/ennemy.png" id="1_ku3k0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj6q8"]
+radius = 7.0
+
+[node name="Momie" type="CharacterBody2D" unique_id=1929429972 groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_bj6q8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1667855576 groups=["enemy"]]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_bj6q8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=986564269]
+texture = ExtResource("1_ku3k0")
+
+[node name="HitTimer" type="Timer" parent="." unique_id=1384189994]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
