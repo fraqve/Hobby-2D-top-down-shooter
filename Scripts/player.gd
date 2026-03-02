@@ -43,11 +43,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		# We creat a scean of the bullet
 		var bullet = bullet_scene.instantiate()
-		# Set it roation and postition so whe we mve forwad we use the x of the bullet not global x
-		bullet.global_position = $Gun/muzzle.global_position
-		bullet.rotation = gun.rotation 
-		# We add that scean we created to the main game scean so it shows up
-		get_tree().root.add_child(bullet)
+		# Set it roation and postition so whe we mve forwad we use the x of the bullet not global
+		# and emit the signal 
+		GameManager.bullet_shot.emit(bullet,$Gun/muzzle.global_position,gun.rotation)
+		
 
 	if Input.is_action_just_pressed("roll") and rollreload.is_stopped():
 		var roll_direction = (get_global_mouse_position() - global_position).normalized()
