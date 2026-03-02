@@ -15,15 +15,23 @@ func take_damage(amount:int):
 	if health <= 0:
 		queue_free()
 	
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	target = get_tree().get_first_node_in_group("player")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	# we check if target is not null to avoid crashes
+	if target != null:
+		# Direction toward something is a vector the math formula always is
+		# Target_vector2(taregt.global_position) - My_vector2(global_postion)
+		var direction = (target.global_position - global_position).normalized()
+		#
+		var target_velcotiy = direction * speed
+		velocity = velocity.move_toward(target_velcotiy,speed*delta)
+		
+		# calling this function is critical to move 
+		move_and_slide()
 	
 	
 
