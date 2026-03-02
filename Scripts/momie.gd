@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		# Direction toward something is a vector the math formula always is
 		# Target_vector2(taregt.global_position) - My_vector2(global_postion)
 		var direction = (target.global_position - global_position).normalized()
-		#
+		
 		var target_velcotiy = direction * speed
 		velocity = velocity.move_toward(target_velcotiy,speed*delta)
 		
